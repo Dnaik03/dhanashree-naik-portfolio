@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import type { KeyboardEvent } from 'react'
-import './experience.css'
+import './Experience.css'
 
 type Tone = 'work' | 'learn'
 
