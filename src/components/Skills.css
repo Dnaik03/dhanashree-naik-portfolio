@@ -1,0 +1,1332 @@
+/* =========================================================
+   SKILLS SECTION
+   1. Tokens (light + dark)
+   2. Introduction and at-a-glance strip
+   3. Sub-section headings
+   4. Skill explorer (tabs + panel)
+   5. Toolkit (filter + tiles)
+   6. Certifications (tickets)
+   7. How I work (sticky notes)
+   8. Responsive
+   9. Reduced motion
+
+   Everything is scoped to #skills and driven by the global
+   tokens in index.css, so dark mode follows the theme toggle.
+========================================================= */
+
+
+/* =========================================================
+   1. TOKENS
+   --tone is set per element and tints chips, borders, glows.
+========================================================= */
+
+#skills {
+  --sk-t1: #00A6F5;
+  --sk-t2: #10B981;
+  --sk-t3: #8B5CF6;
+  --sk-t4: #E3A43A;
+  --sk-t5: #E5566F;
+  --sk-t6: #14B8A6;
+
+  --tone: var(--sk-t1);
+
+  --sk-ink: var(--color-text-primary);
+  --sk-ink-2: var(--color-text-secondary);
+  --sk-ink-3: var(--color-text-muted);
+  --sk-card: var(--color-surface);
+  --sk-card-2: var(--color-surface-secondary);
+  --sk-line: var(--color-theme-border);
+  --sk-shadow: var(--color-card-shadow);
+  --sk-shadow-hover: var(--color-card-hover-shadow);
+
+  /* Derived from the current tone. Works in light and dark. */
+  --sk-tone-soft: color-mix(in srgb, var(--tone) 12%, var(--sk-card));
+  --sk-tone-line: color-mix(in srgb, var(--tone) 38%, var(--sk-line));
+  --sk-tone-text: color-mix(in srgb, var(--tone) 62%, var(--sk-ink));
+
+  min-width: 0;
+  overflow: clip;
+  color: var(--sk-ink);
+}
+
+:root[data-theme="dark"] #skills {
+  --sk-t1: #38BDF8;
+  --sk-t2: #34D399;
+  --sk-t3: #A78BFA;
+  --sk-t4: #FBBF24;
+  --sk-t5: #FB7185;
+  --sk-t6: #2DD4BF;
+
+  --sk-tone-soft: color-mix(in srgb, var(--tone) 14%, var(--sk-card));
+  --sk-tone-text: color-mix(in srgb, var(--tone) 78%, var(--sk-ink));
+}
+
+#skills *,
+#skills *::before,
+#skills *::after {
+  box-sizing: border-box;
+}
+
+#skills ul,
+#skills ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#skills button:focus-visible,
+#skills a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.sk-gap {
+  margin-top: 80px;
+}
+
+
+/* =========================================================
+   2. INTRODUCTION + AT A GLANCE
+========================================================= */
+
+.sk-intro {
+  margin-bottom: 3rem;
+}
+
+/* =========================================================
+   AT A GLANCE — PREMIUM GOLD CARDS
+========================================================= */
+
+.sk-glance {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 60px;
+}
+
+.sk-glance-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 126px;
+  padding: 22px 18px;
+
+  overflow: hidden;
+  border: 1px solid #B49352;
+  border-radius: 18px;
+
+  /* Soft antique gold */
+  background: linear-gradient(145deg,
+      #f9f2e2 90%);
+
+  color: #171717;
+  text-align: center;
+  text-decoration: none;
+
+  box-shadow:
+    0 4px 12px rgba(122, 73, 53, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.sk-glance-item:hover {
+  transform: translateY(-4px);
+  border-color: #8F6B2E;
+
+  box-shadow:
+    0 12px 24px rgba(122, 73, 53, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.sk-glance-value {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.5vw, 44px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #805A1E;
+}
+
+.sk-glance-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #493923;
+  text-align: center;
+}
+
+.sk-glance-arrow {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+
+  font-size: 14px;
+  color: #805A1E;
+
+  transition: transform 200ms ease;
+}
+
+.sk-glance-item:hover .sk-glance-arrow {
+  transform: translateY(3px);
+}
+
+/* =========================================================
+   3. SUB-SECTION HEADINGS
+   Matches the Featured Projects styling in Work.css
+========================================================= */
+
+.sk-subhead {
+  margin:  0 24px;
+  margin-bottom: 60px;
+}
+
+#skills .sk-subtitle {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+/* Accent words — preserve the exact heading typography */
+#skills .sk-subtitle .sk-title-accent {
+  color: #00A6F5;
+  font-family: var(--font-mono);
+  font: inherit;
+  letter-spacing: inherit;
+  vertical-align: baseline;
+}
+
+#skills .sk-subtitle>span {
+  margin-right: 2px;
+  color: var(--color-gold, #D4AF37);
+  font-size: 0.65em;
+  vertical-align: 0.12em;
+}
+
+#skills .sk-subhead p {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* Keep the same spacing for headings inside each subsection */
+#skills .sk-gap .sk-subhead {
+  margin-top: 0;
+}
+
+
+/* =========================================================
+   4. SKILL EXPLORER
+========================================================= */
+
+.sk-explorer {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.6fr);
+  align-items: start;
+  gap: 16px;
+}
+
+/* ---- Tabs ---- */
+
+.sk-tablist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  margin-bottom: 60px;
+}
+
+.sk-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 16px 18px;
+
+  border: 1px solid var(--sk-line);
+  border-radius: 18px;
+  background: var(--sk-card);
+  box-shadow: var(--sk-shadow);
+
+  color: var(--sk-ink);
+  text-align: left;
+
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.sk-tab:hover {
+  transform: translateX(4px);
+  border-color: var(--sk-tone-line);
+}
+
+.sk-tab.is-active {
+  transform: translateX(8px);
+  border-color: var(--tone);
+  background: var(--sk-tone-soft);
+  box-shadow: var(--sk-shadow-hover);
+}
+
+.sk-tab-dot {
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tone) 18%, transparent);
+  transition: transform 250ms ease;
+}
+
+.sk-tab.is-active .sk-tab-dot {
+  transform: scale(1.25);
+}
+
+.sk-tab-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sk-tab-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.sk-tab-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--sk-ink-3);
+}
+
+.sk-tab-arrow {
+  flex-shrink: 0;
+  color: var(--sk-tone-text);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.sk-tab.is-active .sk-tab-arrow,
+.sk-tab:hover .sk-tab-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- Panel ---- */
+
+.sk-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 28px;
+  overflow: hidden;
+
+  border: 1px solid var(--sk-tone-line);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%,
+      color-mix(in srgb, var(--tone) 16%, transparent),
+      transparent 48%),
+    radial-gradient(circle,
+      var(--color-journey-dot) 1px,
+      transparent 1px) 0 0 / 22px 22px,
+    var(--sk-card);
+  box-shadow: var(--sk-shadow-hover);
+
+  animation: sk-panel-in 380ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+@keyframes sk-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sk-panel-ghost {
+  position: absolute;
+  top: 0px;
+  right: 22px;
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--tone);
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+#skills .sk-panel-title {
+  position: relative;
+  max-width: calc(100% - 90px);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--sk-ink);
+}
+
+#skills .sk-panel-subtitle {
+  position: relative;
+  max-width: 34rem;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--sk-ink-2);
+}
+
+/* Skill chips */
+
+.sk-chips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sk-chip {
+  padding: 8px 14px;
+
+  border: 1px solid var(--sk-tone-line);
+  border-radius: 999px;
+  background: var(--sk-tone-soft);
+
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--sk-ink);
+
+  animation: sk-chip-in 320ms ease both;
+  animation-delay: calc(var(--i, 0) * 45ms + 120ms);
+
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.sk-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--tone);
+  background: var(--tone);
+  color: #fff;
+}
+
+:root[data-theme="dark"] #skills .sk-chip:hover {
+  color: #0B1120;
+}
+
+@keyframes sk-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Approach flow */
+
+.sk-block {
+  position: relative;
+  margin-top: 12px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--sk-line);
+  
+}
+
+.sk-block-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--sk-tone-text);
+  margin-bottom: 15px;
+}
+
+.sk-flow {
+  display: flex;
+  margin-top: 18px;
+}
+
+.sk-flow li {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-align: center;
+}
+
+.sk-flow li:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 17px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--tone);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: sk-line-draw 420ms ease both;
+  animation-delay: calc(var(--i, 0) * 160ms + 450ms);
+}
+
+@keyframes sk-line-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.sk-flow-node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+
+  border: 4px solid var(--tone);
+  border-radius: 50%;
+  background: var(--sk-card);
+
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sk-tone-text);
+
+  animation: sk-chip-in 320ms ease both;
+  animation-delay: calc(var(--i, 0) * 160ms + 350ms);
+}
+
+.sk-flow li:last-child .sk-flow-node {
+  background: var(--tone);
+  color: #fff;
+}
+
+:root[data-theme="dark"] #skills .sk-flow li:last-child .sk-flow-node {
+  color: #0B1120;
+}
+
+.sk-flow-label {
+  max-width: 110px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--sk-ink);
+}
+
+/* Panel footer */
+
+.sk-panel-footer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.sk-seen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-seen-link {
+  padding: 6px 12px;
+  padding-left: 19px;
+
+  border: 1px solid var(--sk-line);
+  border-radius: 999px;
+  background: var(--sk-card);
+
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sk-ink);
+  text-decoration: none;
+
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.sk-seen-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--tone);
+  color: var(--sk-tone-text);
+}
+
+.sk-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 18px;
+
+  border: 1px solid var(--color-text-primary);
+  border-radius: 999px;
+  background: var(--color-text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-button-text);
+
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.sk-next:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+:root[data-theme="dark"] #skills .sk-next:hover {
+  color: #0B1120;
+}
+
+
+/* =========================================================
+   5. TOOLKIT
+========================================================= */
+
+.sk-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sk-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 7px 14px;
+
+  border: 1px solid var(--sk-line);
+  border-radius: 999px;
+  background: var(--sk-card);
+
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sk-ink);
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.sk-filter>span {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+
+  border-radius: 999px;
+  background: var(--sk-tone-soft);
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--sk-tone-text);
+}
+
+.sk-filter:hover {
+  transform: translateY(-2px);
+  border-color: var(--tone);
+}
+
+.sk-filter.is-active {
+  border-color: var(--tone);
+  background: var(--sk-tone-soft);
+}
+
+.sk-filter-caption {
+  min-height: 24px;
+  margin: 16px 0 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--sk-ink-3);
+}
+
+.sk-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.sk-tool {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px 14px;
+
+  border: 1px solid var(--sk-line);
+  border-radius: 16px;
+  background: var(--sk-card);
+  box-shadow: var(--sk-shadow);
+
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.sk-tool:hover {
+  transform: translateY(-3px);
+  border-color: var(--tone);
+  box-shadow: var(--sk-shadow-hover);
+}
+
+.sk-tool.is-dimmed {
+  opacity: 0.28;
+  transform: scale(0.97);
+}
+
+.sk-tool-mark {
+  display: grid;
+  flex: 0 0 42px;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(0, 166, 245, 0.18);
+  border-radius: 12px;
+  background: #F0F7FF;
+  color: #075985;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.sk-tool-mark svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.sk-tool:hover .sk-tool-mark {
+  transform: translateY(-2px);
+  background: #E2F2FF;
+  border-color: #7DD3FC;
+}
+
+.sk-tool-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.sk-tool-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--sk-ink);
+  overflow-wrap: anywhere;
+}
+
+.sk-tool-group {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--sk-ink-3);
+}
+
+
+/* =========================================================
+   6. CERTIFICATIONS — TICKETS
+========================================================= */
+
+.sk-tickets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+
+.sk-ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--sk-line);
+  border-radius: 22px;
+  background: var(--sk-card);
+  box-shadow: var(--sk-shadow);
+
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.sk-ticket:hover {
+  transform: translateY(-5px) rotate(-0.6deg);
+  border-color: var(--tone);
+  box-shadow: var(--sk-shadow-hover);
+}
+
+.sk-ticket-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 20px 20px;
+  background: #0077B6;
+}
+
+.sk-ticket-issuer {
+  min-width: 0;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #FFFFFF;
+}
+
+.sk-ticket-stamp {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+
+  border: 1px solid #10B981;
+  border-radius: 8px;
+  background: #ECFDF5;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: #047857;
+
+  transform: rotate(-4deg);
+  transition: transform 240ms ease;
+}
+
+.sk-ticket:hover .sk-ticket-stamp {
+  transform: rotate(0deg) scale(1.04);
+}
+
+/* Perforated tear line with side notches */
+
+.sk-ticket-tear {
+  position: relative;
+  height: 0;
+  border-top: 2px dashed var(--sk-tone-line);
+}
+
+.sk-ticket-tear::before,
+.sk-ticket-tear::after {
+  content: '';
+  position: absolute;
+  top: -11px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--sk-line);
+  border-radius: 50%;
+  background: var(--color-page);
+}
+
+.sk-ticket-tear::before {
+  left: -11px;
+}
+
+.sk-ticket-tear::after {
+  right: -11px;
+}
+
+.sk-ticket-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 22px 22px;
+}
+
+#skills .sk-ticket-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  color: var(--sk-ink);
+}
+
+#skills .sk-ticket-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.sk-ticket-tags li {
+  padding: 4px 10px;
+  border: 1px solid var(--sk-tone-line);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sk-ink-2);
+}
+
+.sk-ticket-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding: 10px 18px;
+
+  border-radius: 999px;
+  background: var(--color-text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-button-text);
+  text-decoration: none;
+
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.sk-ticket-body .sk-ticket-tags+.sk-ticket-link {
+  margin-top: 26px;
+}
+
+.sk-ticket-link:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+:root[data-theme="dark"] #skills .sk-ticket-link:hover {
+  color: #0B1120;
+}
+
+
+/* =========================================================
+   7. HOW I WORK — STICKY NOTES
+========================================================= */
+
+.sk-notes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 18px;
+  padding-top: 8px;
+}
+
+.sk-note {
+  position: relative;
+  min-width: 0;
+  min-height: 168px;
+  padding: 30px 20px 20px;
+
+  border-radius: 4px 4px 18px 4px;
+  background: color-mix(in srgb, var(--tone) 20%, var(--sk-card));
+  box-shadow:
+    0 10px 18px -8px rgba(15, 23, 42, 0.22),
+    0 2px 4px rgba(15, 23, 42, 0.06);
+
+  transform: rotate(-1.6deg);
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 260ms ease;
+}
+
+.sk-note:nth-child(even) {
+  transform: rotate(1.4deg);
+}
+
+.sk-note:nth-child(3n) {
+  transform: rotate(-0.6deg);
+}
+
+.sk-note:hover,
+.sk-note:focus-within {
+  z-index: 2;
+  transform: rotate(0deg) translateY(-8px) scale(1.03);
+  box-shadow:
+    0 22px 30px -12px rgba(15, 23, 42, 0.3),
+    0 3px 6px rgba(15, 23, 42, 0.08);
+}
+
+.sk-note-pin {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  transform: translateX(-50%);
+}
+
+#skills .sk-note h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--sk-ink);
+}
+
+#skills .sk-note p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--sk-ink-2);
+}
+
+:root[data-theme="dark"] #skills .sk-note {
+  background: color-mix(in srgb, var(--tone) 17%, var(--color-surface));
+  box-shadow:
+    0 10px 18px -8px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--tone) 22%, transparent);
+}
+
+/* =========================================================
+   WORKING DNA — CREATIVE STICKY NOTE DETAILS
+========================================================= */
+
+#skills .sk-note {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+#skills .sk-note h3,
+#skills .sk-note p {
+  position: relative;
+  z-index: 1;
+  max-width: 88%;
+}
+
+#skills .sk-note-doodle {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1;
+
+  color: color-mix(in srgb, var(--tone) 90%, #075985);
+  opacity: 0.72;
+
+  transform: rotate(-9deg);
+  transition:
+    transform 260ms ease,
+    opacity 260ms ease;
+}
+
+#skills .sk-note-scribble {
+  position: absolute;
+  left: 20px;
+  bottom: 17px;
+
+  width: 92px;
+  height: 15px;
+
+  border-top: 3px solid var(--tone);
+  border-radius: 50%;
+  opacity: 0.55;
+
+  transform: rotate(-5deg);
+}
+
+#skills .sk-note-scribble::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: -5px;
+
+  width: 44px;
+  height: 10px;
+
+  border-bottom: 2px solid var(--tone);
+  border-radius: 50%;
+
+  transform: rotate(10deg);
+}
+
+#skills .sk-note::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 76px;
+  height: 76px;
+
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.24),
+      transparent 70%);
+
+  pointer-events: none;
+}
+
+#skills .sk-note:hover .sk-note-doodle {
+  opacity: 1;
+  transform: rotate(0deg) scale(1.12);
+}
+
+#skills .sk-note:hover .sk-note-scribble {
+  transform: rotate(0deg) scaleX(1.08);
+}
+
+@media (max-width: 600px) {
+  #skills .sk-note-doodle {
+    right: 12px;
+    bottom: 14px;
+    font-size: 38px;
+    width: 44px;
+    height: 44px;
+  }
+
+  #skills .sk-note-scribble {
+    left: 14px;
+    bottom: 12px;
+    width: 65px;
+  }
+}
+/* =========================================================
+   8. RESPONSIVE
+========================================================= */
+
+/* Keep the cards balanced on smaller screens */
+@media (max-width: 1100px) {
+  .sk-glance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .sk-glance {
+    gap: 10px;
+  }
+
+  .sk-glance-item {
+    min-height: 112px;
+    padding: 20px 12px 16px;
+    border-radius: 15px;
+  }
+
+  .sk-glance-value {
+    font-size: 34px;
+  }
+
+  .sk-glance-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  /* Tabs become a horizontal swipe row above the panel. */
+  .sk-explorer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sk-tablist {
+    flex-direction: row;
+    gap: 8px;
+    padding: 4px 2px 10px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .sk-tab {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 12px 16px;
+    scroll-snap-align: start;
+  }
+
+  .sk-tab:hover,
+  .sk-tab.is-active {
+    transform: translateY(-2px);
+  }
+
+  .sk-tab-arrow {
+    display: none;
+  }
+
+  .sk-panel {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .sk-gap {
+    margin-top: 64px;
+  }
+
+  .sk-tickets {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sk-notes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sk-glance {
+    gap: 10px;
+  }
+
+  .sk-glance-item {
+    padding: 14px 14px 12px;
+  }
+
+  .sk-panel {
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+
+  .sk-panel-ghost {
+    font-size: 84px;
+  }
+
+  #skills .sk-panel-title {
+    max-width: calc(100% - 60px);
+  }
+
+  .sk-chip {
+    font-size: 12.5px;
+  }
+
+  /* Approach flow turns vertical. */
+  .sk-flow {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sk-flow li {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .sk-flow li:not(:first-child)::before {
+    top: -14px;
+    right: auto;
+    left: 17px;
+    width: 2px;
+    height: 14px;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  @keyframes sk-line-draw {
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .sk-flow-label {
+    max-width: none;
+  }
+
+  .sk-tools {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .sk-tool {
+    padding: 10px;
+  }
+
+  .sk-tool-mark {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .sk-notes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* =========================================================
+   9. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #skills *,
+  #skills *::before,
+  #skills *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .sk-note,
+  .sk-note:nth-child(even),
+  .sk-note:nth-child(3n) {
+    transform: none;
+  }
+}

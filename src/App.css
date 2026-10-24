@@ -1,0 +1,10 @@
+/* App-level layout styles */
+
+main {
+  width: 100%;
+}
+
+/* Keep anchor targets visible below the navbar */
+section[id] {
+  scroll-margin-top: 90px;
+}

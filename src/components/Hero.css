@@ -1,0 +1,7 @@
+/* Hero availability badge — dark theme override is in dark-theme.css */
+
+.availability-badge {
+  color: #065F46;
+  background-color: #D1FAE5;
+  border-color: #A7F3D0;
+}

@@ -1,0 +1,927 @@
+/* =========================================================
+   CONTACT SECTION
+   1. Design tokens
+   2. Heading and layout
+   3. Information card
+   4. Email and location
+   5. Social links
+   6. Resume and buttons
+   7. Contact form
+   8. Success state
+   9. Closing message
+   10. Walking mascot
+   11. Responsive and accessibility
+========================================================= */
+
+
+/* =========================================================
+   1. DESIGN TOKENS
+========================================================= */
+
+.contact {
+  --ct-ink: var(--color-text-primary);
+  --ct-body: var(--color-text-secondary);
+  --ct-muted: var(--color-text-muted);
+
+  --ct-surface: var(--color-surface);
+  --ct-field: var(--color-surface-secondary);
+  --ct-border: var(--color-theme-border);
+
+  --ct-blue: var(--color-blue);
+  --ct-blue-dark: var(--color-accent-hover);
+  --ct-gold: var(--color-gold);
+
+  /* Intentional navy contrast panel in both themes. */
+  --ct-navy: #111827;
+}
+
+
+/* =========================================================
+   2. HEADING AND LAYOUT
+========================================================= */
+
+.ct-head {
+  margin-bottom: 7rem;
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .ct-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.ct-card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .ct-card {
+    padding: 2rem;
+  }
+}
+
+.ct-kicker {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ct-kicker--gold {
+  color: var(--ct-gold);
+}
+
+
+/* =========================================================
+   3. INFORMATION CARD
+========================================================= */
+
+.ct-info {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  background-color: var(--ct-navy);
+}
+
+.ct-info-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ct-hire-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 0.45rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(134, 239, 172, 0.2);
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #86efac;
+  font-size: 0.65rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.ct-hire-badge .ct-pulse {
+  width: 0.4rem;
+  height: 0.4rem;
+  flex: none;
+}
+
+.ct-pulse {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: ct-pulse 1.8s ease-out infinite;
+}
+
+@keyframes ct-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(34, 197, 94, 0);
+  }
+}
+
+.ct-info-text {
+  margin-top: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.ct-availability {
+  margin-top: 1.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ct-availability-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--ct-blue);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.12em;
+}
+
+.ct-availability p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   4. EMAIL AND LOCATION
+========================================================= */
+
+.ct-email-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.ct-email-link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  gap: 0.9rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.ct-email-link:hover {
+  border-color: var(--ct-blue);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ct-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 166, 245, 0.15);
+  color: var(--ct-blue);
+  font-size: 1.1rem;
+}
+
+.ct-email-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.85rem;
+  font-weight: var(--weight-medium);
+}
+
+.ct-email-text small,
+.ct-meta small {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: var(--weight-regular);
+}
+
+.ct-copy {
+  flex: none;
+  padding: 0 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.9rem;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.ct-copy:hover {
+  border-color: var(--ct-blue);
+  background: rgba(0, 166, 245, 0.12);
+}
+
+.ct-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: var(--weight-medium);
+}
+
+.ct-meta .ct-location {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.9rem;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.ct-location:hover {
+  border-color: rgba(0, 166, 245, 0.55);
+  background: rgba(0, 166, 245, 0.06);
+}
+
+.ct-location-text {
+  min-width: 0;
+  font-size: 0.85rem;
+  font-weight: var(--weight-medium);
+}
+
+.ct-location-text small {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   5. SOCIAL LINKS
+========================================================= */
+
+.ct-social-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0.85rem;
+}
+
+.ct-social-heading .ct-kicker--muted {
+  margin: 0;
+}
+
+.ct-socials {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ct-brand-mark {
+  font-size: 1rem;
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.04em;
+}
+
+.ct-social-icons-only {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ct-social-icon-button {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ct-gold);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ct-social-icon-button:hover {
+  transform: translateY(-4px);
+  color: var(--ct-blue);
+  background: rgba(0, 166, 245, 0.1);
+  border-color: var(--ct-blue);
+  box-shadow: 0 8px 22px rgba(0, 166, 245, 0.15);
+}
+
+.ct-social-icon-button:focus-visible {
+  outline: 2px solid var(--ct-blue);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   6. RESUME AND BUTTONS
+========================================================= */
+
+.ct-resume {
+  margin-top: 3rem;
+  padding-top: 0.4rem;
+  text-align: center;
+}
+
+.ct-resume p {
+  margin-top: 0.75rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.ct-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ct-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ct-btn:focus-visible {
+  outline: 2px solid var(--ct-blue);
+  outline-offset: 2px;
+}
+
+.ct-btn--blue {
+  background: var(--ct-blue);
+}
+
+.ct-btn--blue:hover {
+  background: var(--ct-blue-dark);
+}
+
+.ct-btn--dark {
+  background: var(--ct-navy);
+}
+
+.ct-btn--dark:hover {
+  background: var(--ct-blue);
+}
+
+.ct-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+  transform: none;
+}
+
+
+/* =========================================================
+   7. CONTACT FORM
+========================================================= */
+
+.ct-form-card {
+  background: var(--ct-surface);
+  border: 1px solid var(--ct-border);
+  box-shadow: var(--color-card-shadow);
+}
+
+.ct-form-title {
+  margin-top: 0.5rem;
+  color: var(--ct-ink);
+  font-size: 1.5rem;
+  font-weight: var(--weight-bold);
+}
+
+.ct-topics {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.ct-topics legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+  color: var(--ct-ink);
+  font-size: 0.875rem;
+  font-weight: var(--weight-semibold);
+}
+
+.ct-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ct-chip {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--ct-border);
+  border-radius: 999px;
+  background: var(--ct-field);
+  color: var(--ct-ink);
+  font-size: 0.8rem;
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ct-chip:hover {
+  border-color: var(--ct-blue);
+  transform: translateY(-1px);
+}
+
+.ct-chip.is-active {
+  border-color: var(--ct-blue);
+  background: var(--color-accent-soft);
+  color: var(--ct-blue);
+  font-weight: var(--weight-semibold);
+}
+
+.ct-form {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .ct-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ct-field {
+  position: relative;
+  display: block;
+}
+
+.ct-field>span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--ct-ink);
+  font-size: 0.85rem;
+  font-weight: var(--weight-semibold);
+}
+
+.ct-field i {
+  color: var(--ct-blue);
+  font-style: normal;
+}
+
+.ct-field input,
+.ct-field textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ct-border);
+  border-radius: 0.85rem;
+  background: var(--ct-field);
+  color: var(--ct-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ct-field textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.ct-field input::placeholder,
+.ct-field textarea::placeholder {
+  color: var(--ct-muted);
+}
+
+.ct-field input:focus,
+.ct-field textarea:focus {
+  border-color: var(--ct-blue);
+  background: var(--ct-surface);
+  box-shadow: 0 0 0 4px rgba(0, 166, 245, 0.12);
+}
+
+.ct-count {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.6rem;
+  color: var(--ct-muted);
+  font-size: 0.7rem;
+  font-style: normal;
+  pointer-events: none;
+}
+
+.ct-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.ct-error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.ct-error a {
+  color: inherit;
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   8. SUCCESS STATE
+========================================================= */
+
+.ct-success {
+  display: grid;
+  place-items: center;
+  gap: 0.9rem;
+  min-height: 24rem;
+  text-align: center;
+  animation: ct-pop 0.5s ease both;
+}
+
+.ct-success h3 {
+  color: var(--ct-ink);
+  font-size: 1.75rem;
+  font-weight: var(--weight-bold);
+}
+
+.ct-success p {
+  max-width: 26rem;
+  color: var(--ct-body);
+  line-height: 1.7;
+}
+
+.ct-success .ct-btn {
+  width: auto;
+}
+
+.ct-check {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  font-size: 2rem;
+  animation: ct-bounce 0.8s ease both;
+}
+
+@keyframes ct-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ct-bounce {
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ct-closing {
+  margin-bottom: 0;
+  padding-bottom: 50px;
+}
+
+/* =========================================================
+   9. CLOSING MESSAGE
+========================================================= */
+
+.ct-closing {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ct-border);
+  text-align: center;
+}
+
+.ct-closing h1 {
+  color: var(--ct-ink);
+  font-size: 35px;
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+}
+
+.ct-closing small {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--ct-muted);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+}
+
+.ct-br {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .ct-br {
+    display: inline;
+  }
+}
+
+
+/* =========================================================
+   10. DARK THEME
+========================================================= */
+
+:root[data-theme="dark"] .ct-info {
+  border: 1px solid var(--ct-border);
+}
+
+:root[data-theme="dark"] .ct-form-card {
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   11. LITTLE IDEA BOT
+   Walk, pause and greet
+========================================================= */
+
+.contact .ct-grid {
+  position: relative;
+}
+
+.contact .ct-mascot-track {
+  position: absolute;
+  top: -5.6rem;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 5.2rem;
+  pointer-events: none;
+}
+
+.contact .ct-mascot-walker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: max-content;
+  animation: ct-robot-walk 18s ease-in-out infinite alternate;
+}
+
+.contact .ct-mascot-character {
+  flex: none;
+  width: 4.5rem;
+  height: 5.2rem;
+  transform-origin: bottom center;
+  animation: ct-robot-bob 0.65s ease-in-out infinite alternate;
+}
+
+.contact .ct-mascot-character svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Leg movement */
+.contact .ct-robot-leg-left,
+.contact .ct-robot-leg-right {
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.contact .ct-robot-leg-left {
+  animation: ct-robot-step 0.4s ease-in-out infinite alternate;
+}
+
+.contact .ct-robot-leg-right {
+  animation: ct-robot-step 0.4s ease-in-out infinite alternate-reverse;
+}
+
+/* Keep arms still while walking */
+.contact .ct-mascot-track.is-walking .ct-robot-arm-left,
+.contact .ct-mascot-track.is-walking .ct-robot-arm-right {
+  animation: none;
+}
+
+/* Pause the walk and wave while speaking */
+.contact .ct-mascot-track.is-speaking .ct-mascot-walker,
+.contact .ct-mascot-track.is-speaking .ct-mascot-character,
+.contact .ct-mascot-track.is-speaking .ct-robot-leg-left,
+.contact .ct-mascot-track.is-speaking .ct-robot-leg-right {
+  animation-play-state: paused;
+}
+
+.contact .ct-mascot-track.is-speaking .ct-robot-arm-right {
+  transform-box: fill-box;
+  transform-origin: 20% 30%;
+  animation: ct-robot-wave 0.55s ease-in-out 3;
+}
+
+/* Speech bubble stays hidden while walking */
+.contact .ct-mascot-bubble {
+  position: relative;
+  width: max-content;
+  max-width: 13rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--ct-border);
+  border-radius: 0.9rem;
+  background: var(--ct-surface);
+  box-shadow: var(--color-card-shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(5px) scale(0.96);
+  transform-origin: left center;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease,
+    visibility 250ms ease;
+}
+
+.contact .ct-mascot-track.is-speaking .ct-mascot-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.contact .ct-mascot-bubble-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--ct-blue);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+}
+
+.contact .ct-mascot-bubble p {
+  margin: 0;
+  color: var(--ct-ink);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+/* Walking animation */
+@keyframes ct-robot-walk {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - 4.5rem);
+  }
+}
+
+@keyframes ct-robot-bob {
+  from {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  to {
+    transform: translateY(-3px) rotate(2deg);
+  }
+}
+
+@keyframes ct-robot-step {
+  from {
+    rotate: -12deg;
+  }
+
+  to {
+    rotate: 12deg;
+  }
+}
+
+@keyframes ct-robot-wave {
+
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+
+  50% {
+    rotate: -25deg;
+  }
+}
+
+
+/* =========================================================
+   12. RESPONSIVE AND ACCESSIBILITY
+========================================================= */
+
+@media (max-width: 640px) {
+  .contact .ct-mascot-track {
+    top: -4.8rem;
+    height: 4.5rem;
+  }
+
+  .contact .ct-mascot-character {
+    width: 3.6rem;
+    height: 4.4rem;
+  }
+
+  .contact .ct-mascot-bubble {
+    max-width: 10rem;
+  }
+
+  @keyframes ct-robot-walk {
+    from {
+      left: 0;
+    }
+
+    to {
+      left: calc(100% - 3.6rem);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .contact .ct-mascot-walker,
+  .contact .ct-mascot-character,
+  .contact .ct-robot-leg-left,
+  .contact .ct-robot-leg-right,
+  .contact .ct-robot-arm-left,
+  .contact .ct-robot-arm-right {
+    animation: none !important;
+  }
+}

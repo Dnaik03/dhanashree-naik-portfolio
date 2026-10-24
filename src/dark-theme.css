@@ -1,0 +1,529 @@
+/* =========================================================
+   DARK THEME
+   1. Theme tokens
+   2. Tailwind compatibility
+   3. Existing arbitrary colours
+   4. Hero
+   5. About
+   6. Work — featured projects
+   7. Work — creative practice
+   8. Preserve artwork colours
+   9. Focus states and reduced motion
+  10. Beyond Work
+========================================================= */
+
+
+/* =========================================================
+   1. THEME TOKENS
+========================================================= */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --color-page: #0B1120;
+  --color-surface: #111827;
+  --color-surface-secondary: #172033;
+  --color-surface-tertiary: #1E293B;
+
+  /* Typography */
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-text-inverse: #0B1120;
+
+  /* Brand and accents */
+  --color-navy: #F1F5F9;
+  --color-slate: #CBD5E1;
+  --color-blue: #38BDF8;
+  --color-mint: #34D399;
+  --color-border: #273449;
+  --color-theme-border: #273449;
+  --color-accent: #38BDF8;
+  --color-accent-hover: #7DD3FC;
+  --color-accent-soft: #172D42;
+  --color-button-text: #0B1120;
+
+  /* Tags */
+  --color-tag-bg: #12352F;
+  --color-tag-border: #17664F;
+  --color-tag-text: #A7F3D0;
+
+  /* Cards */
+  --color-card-number: #1E3047;
+  --color-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  --color-card-hover-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+
+  /* Journey */
+  --color-journey-dot: rgba(148, 163, 184, 0.12);
+  --color-journey-route-start: #64748B;
+  --color-journey-route-end: #64748B;
+  --color-journey-popup: #111827;
+}
+
+
+/* =========================================================
+   2. TAILWIND COMPATIBILITY
+========================================================= */
+
+/* Backgrounds */
+
+:root[data-theme="dark"] .bg-white {
+  background-color: var(--color-surface) !important;
+}
+
+:root[data-theme="dark"] .bg-slate-50,
+:root[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--color-surface-secondary) !important;
+}
+
+:root[data-theme="dark"] .bg-slate-100,
+:root[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--color-surface-tertiary) !important;
+}
+
+/* Text */
+
+:root[data-theme="dark"] .text-black,
+:root[data-theme="dark"] .text-gray-900,
+:root[data-theme="dark"] .text-slate-900 {
+  color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="dark"] .text-gray-800,
+:root[data-theme="dark"] .text-slate-800,
+:root[data-theme="dark"] .text-gray-700,
+:root[data-theme="dark"] .text-slate-700 {
+  color: var(--color-text-secondary) !important;
+}
+
+:root[data-theme="dark"] .text-gray-600,
+:root[data-theme="dark"] .text-slate-600,
+:root[data-theme="dark"] .text-gray-500,
+:root[data-theme="dark"] .text-slate-500 {
+  color: var(--color-text-muted) !important;
+}
+
+/* Borders */
+
+:root[data-theme="dark"] .border-slate-100,
+:root[data-theme="dark"] .border-slate-200,
+:root[data-theme="dark"] .border-gray-100,
+:root[data-theme="dark"] .border-gray-200 {
+  border-color: var(--color-theme-border) !important;
+}
+
+
+/* =========================================================
+   3. EXISTING ARBITRARY TAILWIND COLOURS
+========================================================= */
+
+/* Light surfaces */
+
+:root[data-theme="dark"] [class~="bg-[#FFFFFF]"],
+:root[data-theme="dark"] [class~="bg-white"] {
+  background-color: var(--color-surface) !important;
+}
+
+:root[data-theme="dark"] [class~="bg-[#EAF5FF]"],
+:root[data-theme="dark"] [class~="bg-[#F2F8FF]"],
+:root[data-theme="dark"] [class~="bg-[#DCEEFF]"],
+:root[data-theme="dark"] [class~="bg-[#F8FAFC]"] {
+  background-color: var(--color-surface-secondary) !important;
+}
+
+/* Fixed text colours */
+
+:root[data-theme="dark"] [class~="text-[#111827]"] {
+  color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="dark"] [class~="text-[#374151]"] {
+  color: var(--color-text-secondary) !important;
+}
+
+:root[data-theme="dark"] [class~="text-[#64748B]"] {
+  color: var(--color-text-muted) !important;
+}
+
+/* Fixed borders */
+
+:root[data-theme="dark"] [class~="border-[#E2E8F0]"],
+:root[data-theme="dark"] [class~="border-slate-200/80"] {
+  border-color: var(--color-theme-border) !important;
+}
+
+
+/* =========================================================
+   4. HERO
+========================================================= */
+
+
+
+
+/* =========================================================
+   5. ABOUT — STAT CARDS
+========================================================= */
+
+/* Card surfaces */
+
+:root[data-theme="dark"] #about .grid>a[href="#work"],
+:root[data-theme="dark"] #about .grid>a[href="#skills"] {
+  background-color: #201B30 !important;
+  border-color: #493665 !important;
+}
+
+:root[data-theme="dark"] #about .grid>article:nth-of-type(1) {
+  background-color: #102B25 !important;
+  border-color: #245443 !important;
+}
+
+:root[data-theme="dark"] #about .grid>article:nth-of-type(2) {
+  background-color: #302514 !important;
+  border-color: #62491F !important;
+}
+
+/* Shared text */
+
+:root[data-theme="dark"] #about .grid>a h3,
+:root[data-theme="dark"] #about .grid>article h3 {
+  color: #F1F5F9 !important;
+  -webkit-text-fill-color: #F1F5F9 !important;
+}
+
+:root[data-theme="dark"] #about .grid>a p:not(.font-display),
+:root[data-theme="dark"] #about .grid>article p:not(.font-display) {
+  color: #CBD5E1 !important;
+  -webkit-text-fill-color: #CBD5E1 !important;
+}
+
+/* Individual statistics */
+
+:root[data-theme="dark"] #about .grid>a[href="#work"] p.font-display {
+  color: #38BDF8 !important;
+  -webkit-text-fill-color: #38BDF8 !important;
+}
+
+:root[data-theme="dark"] #about .grid>article:nth-of-type(1) p.font-display {
+  color: #34D399 !important;
+  -webkit-text-fill-color: #34D399 !important;
+}
+
+:root[data-theme="dark"] #about .grid>a[href="#skills"] p.font-display {
+  color: #C4B5FD !important;
+  -webkit-text-fill-color: #C4B5FD !important;
+}
+
+:root[data-theme="dark"] #about .grid>article:nth-of-type(2) span.text-6xl {
+  color: #FBBF24 !important;
+  -webkit-text-fill-color: #FBBF24 !important;
+}
+
+/* Badges and pills */
+
+:root[data-theme="dark"] #about .grid>a>span.rounded-full,
+:root[data-theme="dark"] #about .grid>article>span.rounded-full {
+  background-color: #111827 !important;
+}
+
+:root[data-theme="dark"] #about .grid>a[href="#skills"]>span:not(.absolute) {
+  color: #C4B5FD !important;
+  -webkit-text-fill-color: #C4B5FD !important;
+}
+
+:root[data-theme="dark"] #about .grid>article:nth-of-type(2) .rounded-full:not(.absolute) {
+  background-color: #493719 !important;
+  color: #FDE68A !important;
+}
+
+
+/* =========================================================
+   6. WORK — FEATURED PROJECTS
+========================================================= */
+
+/* Card surfaces */
+
+:root[data-theme="dark"] #work .work-case-card,
+:root[data-theme="dark"] #work .work-creative-card {
+  border-color: var(--color-theme-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Featured card glow */
+
+:root[data-theme="dark"] #work .work-case-card {
+  background-image: radial-gradient(circle at 100% 0%,
+      rgba(56, 189, 248, 0.09),
+      transparent 42%);
+}
+
+/* Titles and content */
+
+:root[data-theme="dark"] #work .work-case-card .work-project-title {
+  color: var(--color-accent);
+}
+
+:root[data-theme="dark"] #work .work-case-card p,
+:root[data-theme="dark"] #work .work-case-card li {
+  color: var(--color-text-secondary);
+}
+
+/* Outcome panel */
+
+:root[data-theme="dark"] #work .work-case-card .border-\[\#BAE6FD\] {
+  border-color: #24506B;
+}
+
+:root[data-theme="dark"] #work .work-case-card .bg-\[\#EFF8FF\] {
+  background-color: #132A3D;
+}
+
+:root[data-theme="dark"] #work .work-case-card .border-l-\[\#00A6F5\] {
+  border-left-color: #38BDF8;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-\[\#007CB8\] {
+  color: #7DD3FC;
+}
+
+/* Status badges */
+
+:root[data-theme="dark"] #work .work-case-card .bg-emerald-50 {
+  background-color: #12352F;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-emerald-700 {
+  color: #6EE7B7;
+}
+
+:root[data-theme="dark"] #work .work-case-card .bg-sky-50 {
+  background-color: #172D42;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-sky-700 {
+  color: #7DD3FC;
+}
+
+/* Skill tags */
+
+:root[data-theme="dark"] #work .work-case-card .border-emerald-100 {
+  border-color: #245443;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-emerald-800 {
+  color: #A7F3D0;
+}
+
+:root[data-theme="dark"] #work .work-case-card .hover\:bg-emerald-100:hover {
+  background-color: #164638;
+}
+
+/* Actions and links */
+
+:root[data-theme="dark"] #work .work-case-card button {
+  border-color: var(--color-theme-border);
+}
+
+:root[data-theme="dark"] #work .work-case-card button:hover {
+  border-color: var(--color-accent);
+}
+
+:root[data-theme="dark"] #work .work-case-card a {
+  color: #7DD3FC;
+}
+
+:root[data-theme="dark"] #work .work-case-card a:hover {
+  background-color: #172D42;
+}
+
+/* Carousel controls */
+
+:root[data-theme="dark"] #work .work-carousel-button {
+  border-color: var(--color-theme-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .work-carousel-button:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: #0B1120;
+}
+
+
+/* =========================================================
+   7. WORK — CREATIVE PRACTICE
+========================================================= */
+
+/* Typography */
+
+:root[data-theme="dark"] #work .creative-title-row h3 {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .creative-card-content>p,
+:root[data-theme="dark"] #work .creative-reveal p {
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme="dark"] #work .creative-card-topline {
+  color: var(--color-text-muted);
+}
+
+/* Labels and indices */
+
+:root[data-theme="dark"] #work .creative-type,
+:root[data-theme="dark"] #work .creative-index {
+  border-color: var(--color-theme-border);
+  color: var(--color-text-muted);
+}
+
+/* Tags */
+
+:root[data-theme="dark"] #work .creative-tags span {
+  border-color: rgba(56, 189, 248, 0.22);
+  background-color: rgba(56, 189, 248, 0.075);
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme="dark"] #work .creative-tags span:hover {
+  background-color: rgba(56, 189, 248, 0.14);
+}
+
+/* Reveal panel */
+
+:root[data-theme="dark"] #work .creative-reveal {
+  border-top-color: var(--color-theme-border);
+}
+
+:root[data-theme="dark"] #work .creative-reveal-label,
+:root[data-theme="dark"] #work .marketing-mini-type span:nth-child(even),
+:root[data-theme="dark"] #work .visual-flow-arrow {
+  color: var(--color-accent);
+}
+
+/* Interactive controls */
+
+:root[data-theme="dark"] #work .creative-toggle {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .creative-toggle>span {
+  border-color: var(--color-theme-border);
+  color: var(--color-accent);
+}
+
+:root[data-theme="dark"] #work .creative-toggle:hover>span {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: #0B1120;
+}
+
+/* Branding palette controls */
+
+:root[data-theme="dark"] #work .branding-palette-controls button {
+  border-color: currentColor;
+  background-color: transparent;
+  color: inherit;
+}
+
+:root[data-theme="dark"] #work .branding-palette-controls button:hover {
+  background-color: currentColor;
+  color: var(--color-surface);
+}
+
+
+/* =========================================================
+   8. PRESERVE INTENTIONAL ARTWORK COLOURS
+========================================================= */
+
+:root[data-theme="dark"] #work .branding-artwork {
+  background-color: #211719;
+}
+
+:root[data-theme="dark"] #work .marketing-artwork {
+  background-color: #00A6F5;
+  color: #082B40;
+}
+
+:root[data-theme="dark"] #work .marketing-artwork.is-transformed {
+  background-color: #F2E9DF;
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace {
+  background-color: #F2E9DF;
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-artwork-heading {
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace-reset {
+  border-color: rgba(41, 44, 43, 0.3);
+  background-color: rgba(242, 233, 223, 0.94);
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace-reset:hover {
+  border-color: #292C2B;
+  background-color: #292C2B;
+  color: #FFFFFF;
+}
+
+
+/* =========================================================
+   9. FOCUS STATES & REDUCED MOTION
+========================================================= */
+
+:root[data-theme="dark"] #work button:focus-visible,
+:root[data-theme="dark"] #work a:focus-visible {
+  outline-color: #7DD3FC;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  :root[data-theme="dark"] *,
+  :root[data-theme="dark"] *::before,
+  :root[data-theme="dark"] *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   10. BEYOND WORK — DARK THEME TOKENS
+========================================================= */
+
+[data-theme="dark"] .bw {
+  --bw-ink: #F1F5F9;
+  --bw-strong: #E2E8F0;
+  --bw-body: #94A3B8;
+  --bw-surface: #111827;
+  --bw-soft: #0B1220;
+  --bw-line: #1F2A3D;
+
+  --bw-blue-soft: rgba(0, 166, 245, 0.1);
+  --bw-blue-line: rgba(0, 166, 245, 0.32);
+  --bw-glow: rgba(0, 166, 245, 0.16);
+
+  --bw-gold-ink: #E6C65C;
+  --bw-gold-soft: rgba(212, 175, 55, 0.1);
+  --bw-gold-line: rgba(212, 175, 55, 0.3);
+  --bw-glow-gold: rgba(212, 175, 55, 0.16);
+
+  --bw-green-ink: #86EFAC;
+  --bw-green-soft: rgba(34, 197, 94, 0.1);
+  --bw-green-line: rgba(34, 197, 94, 0.28);
+
+  --bw-night: #05080F;
+  --bw-night-2: #0D1524;
+
+  --bw-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --bw-shadow-hover: 0 14px 38px rgba(0, 166, 245, 0.18);
+}

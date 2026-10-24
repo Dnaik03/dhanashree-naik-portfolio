@@ -1,0 +1,628 @@
+/* =========================================================
+   ABOUT
+   1. Interactive quest map (My journey)
+   2. What I bring — flipping cards
+   3. Responsive
+   4. Reduced motion
+   5. Stat cards (The little things add up)
+========================================================= */
+
+/* =========================================================
+   1. INTERACTIVE QUEST MAP
+========================================================= */
+
+.quest-map {
+  position: relative;
+  min-height: 440px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  isolation: isolate;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  background-image: radial-gradient(circle,
+      var(--color-journey-dot) 1px,
+      transparent 1px);
+  background-size: 22px 22px;
+}
+
+.quest-pin {
+  width: 120px;
+  pointer-events: none;
+}
+
+.quest-popup {
+  animation: journey-popup-in 250ms ease-out;
+  background-color: var(--color-journey-popup);
+  color: var(--color-text-primary);
+  border-color: var(--color-theme-border);
+}
+
+@keyframes journey-popup-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* =========================================================
+   2. WHAT I BRING — STABLE FLIPPING CARDS
+========================================================= */
+
+.strengths-section {
+  width: 100%;
+  margin-top: var(--section-spacing);
+  min-width: 0;
+}
+
+.strengths-heading {
+  max-width: 860px;
+}
+
+.strengths-eyebrow {
+  margin-bottom: 10px;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.strengths-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+
+.strengths-title span {
+  color: var(--color-accent);
+}
+
+.strengths-subtitle {
+  max-width: 680px;
+  margin-top: 12px;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Grid */
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Accessible flip button */
+
+.strength-flip-button {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.strength-flip-button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 5px;
+}
+
+/* 3D stage */
+
+.strength-flip-stage {
+  position: relative;
+  width: 100%;
+  height: 390px;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+}
+
+.strength-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  border-radius: 20px;
+}
+
+.strength-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Shared card face */
+
+.strength-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 24px;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  border: 1px solid var(--color-theme-border);
+  border-radius: 20px;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  box-shadow: var(--color-card-shadow);
+
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    background-color 250ms ease;
+}
+
+/* Front and back */
+
+.strength-card-front {
+  z-index: 2;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.strength-card-back {
+  transform: rotateY(180deg);
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Hover effects */
+
+.strength-flip-button:hover .strength-card {
+  border-color: var(--color-accent);
+  box-shadow: var(--color-card-hover-shadow);
+}
+
+.strength-flip-button:hover .strength-card-arrow {
+  transform: translateX(3px);
+}
+
+/* Background number */
+
+.strength-card-number {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  z-index: 0;
+
+  font-family: var(--font-display);
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+
+  color: var(--color-accent);
+  opacity: 0.10;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Top line */
+
+.strength-card-topline {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  min-height: 18px;
+
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.strength-card-topline-slash {
+  opacity: 0.65;
+}
+
+.strength-card-topline-label {
+  letter-spacing: 0.04em;
+}
+
+/* Card title */
+
+.strength-card-title {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  min-width: 0;
+  margin: 46px 0 0;
+  padding: 0;
+
+  color: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(17px, 1.35vw, 20px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.strength-card-dot {
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+/* Description */
+
+.strength-card-description {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 12px;
+
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Skill tags */
+
+.strength-card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 7px;
+
+  min-width: 0;
+  margin-top: 20px;
+  padding: 0;
+
+  flex-shrink: 0;
+}
+
+.strength-skill-tag {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+
+  padding: 5px 9px;
+
+  border: 1px solid var(--color-tag-border);
+  border-radius: 999px;
+
+  background-color: var(--color-tag-bg);
+  color: var(--color-tag-text);
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Footer stays at the bottom */
+
+.strength-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  padding-top: 14px;
+  padding-bottom: 2px;
+
+  border-top: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+
+  flex-shrink: 0;
+}
+
+.strength-card-footer>span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.strength-card-arrow {
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: transform 200ms ease;
+}
+
+/* Bottom accent line */
+
+.strength-card-accent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 4px;
+  background-color: var(--color-accent);
+
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.strength-flip-button:hover .strength-card-accent {
+  transform: scaleX(1);
+}
+
+/* Back face content */
+
+.strength-card-back-title {
+  margin-top: 28px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.strength-card-points {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  min-width: 0;
+  margin-top: 26px;
+}
+
+.strength-card-point {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.strength-point-number {
+  padding-top: 2px;
+
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.strength-card-point p {
+  min-width: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.strength-card-back .strength-card-footer {
+  margin-top: auto;
+  border-color: var(--color-theme-border);
+}
+
+/* =========================================================
+   3. RESPONSIVE LAYOUT
+========================================================= */
+
+/* Small desktop and tablet */
+
+@media (max-width: 1100px) {
+  .strengths-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .strength-flip-stage {
+    height: 370px;
+  }
+
+  .strength-card-title {
+    font-size: 20px;
+  }
+
+  .strength-card-description,
+  .strength-card-point p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .strengths-section {
+    margin-top: 68px;
+  }
+
+  .strengths-heading {
+    margin-bottom: 24px;
+  }
+
+  .strengths-subtitle {
+    font-size: 15px;
+  }
+
+  .strengths-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .strength-flip-stage {
+    height: 350px;
+  }
+
+  .strength-card {
+    padding: 24px;
+  }
+
+  .strength-card-number {
+    top: 12px;
+    right: 18px;
+    font-size: 72px;
+  }
+
+  .strength-card-title {
+    margin-top: 30px;
+    font-size: 20px;
+  }
+
+  .strength-card-description {
+    font-size: 14px;
+  }
+
+  .strength-card-skills {
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .strength-skill-tag {
+    font-size: 12px;
+  }
+
+  .strength-card-back-title {
+    margin-top: 24px;
+    font-size: 19px;
+  }
+
+  .strength-card-points {
+    gap: 14px;
+    margin-top: 22px;
+  }
+}
+
+/* Very narrow screens */
+
+@media (max-width: 360px) {
+  .strength-card {
+    padding: 20px;
+  }
+
+  .strength-flip-stage {
+    height: 360px;
+  }
+
+  .strength-card-title {
+    font-size: 18px;
+  }
+
+  .strength-card-number {
+    right: 14px;
+    font-size: 64px;
+  }
+
+  .strength-card-points {
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   4. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .quest-popup {
+    animation: none;
+  }
+
+  .strength-flip-inner {
+    transition: none;
+  }
+
+  .strength-card,
+  .strength-card-accent,
+  .strength-card-arrow {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   5. ABOUT — STAT CARDS IN DARK MODE
+--------------------------------------------------------- */
+
+:root[data-theme="dark"] #about .grid>a h3,
+:root[data-theme="dark"] #about .grid>article h3 {
+  color: var(--color-text-primary) !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="dark"] #about .grid>a p:not(.font-display),
+:root[data-theme="dark"] #about .grid>article p:not(.font-display) {
+  color: var(--color-text-secondary) !important;
+  -webkit-text-fill-color: var(--color-text-secondary) !important;
+}
+
+:root[data-theme="dark"] #about .grid>a p.font-display,
+:root[data-theme="dark"] #about .grid>article p.font-display {
+  -webkit-text-fill-color: currentColor;
+}
+
+:root[data-theme="dark"] #about .grid>a p.text-\[\#087FC0\] {
+  color: #38BDF8 !important;
+  -webkit-text-fill-color: #38BDF8 !important;
+}
+
+:root[data-theme="dark"] #about .grid>article p.text-\[\#087C62\],
+:root[data-theme="dark"] #about .grid>article span.text-\[\#087C62\] {
+  color: #34D399 !important;
+  -webkit-text-fill-color: #34D399 !important;
+}
+
+:root[data-theme="dark"] #about .grid>a p.text-\[\#7847B8\] {
+  color: #C4B5FD !important;
+  -webkit-text-fill-color: #C4B5FD !important;
+}
+
+:root[data-theme="dark"] #about .grid>a p.text-\[\#64748B\],
+:root[data-theme="dark"] #about .grid>article p.text-\[\#64748B\] {
+  color: #94A3B8 !important;
+  -webkit-text-fill-color: #94A3B8 !important;
+}
+

@@ -1,0 +1,1462 @@
+/* =========================================================
+   WORK SECTION
+   1. Work section foundation
+   2. Section headings
+   3. Featured projects carousel
+   4. Featured project cards
+   5. Creative practice grid
+   6. Creative card topline
+   7. Shared creative artwork
+   8. Branding palette playground
+   9. Marketing transformation
+   10. Visual communication sketchbook
+   11. Creative card content
+   12. Creative skill tags
+   13. Creative thinking reveals
+   14. Creative process visuals
+   15. Creative card toggle
+   16. Dark theme
+   17. Tablet
+   18. Mobile
+   19. Small mobile
+   20. Accessibility and reduced motion
+========================================================= */
+
+
+/* =========================================================
+   1. WORK SECTION FOUNDATION
+========================================================= */
+
+#work {
+  min-width: 0;
+  overflow: clip;
+  color: var(--color-text-primary);
+}
+
+#work *,
+#work *::before,
+#work *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   2. SECTION INTRODUCTION AND SPACING
+========================================================= */
+
+/* Main introduction */
+#work .work-header {
+  margin: 0 0 3rem;
+}
+
+/* WORK THAT */
+#work .work-header .eyebrow {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* MAKES AN IMPACT */
+#work .work-header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Introduction description */
+#work .work-header>p:last-child {
+  margin-top:0;
+  margin-bottom: 0;
+}
+
+/* Featured Projects and Creative Practice headings */
+.work-subsection {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.work-subsection-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+.work-subsection-title>span[aria-hidden="true"] {
+  margin-right: 2px;
+  color: var(--color-gold, #D4AF37);
+  font-size: 0.65em;
+  vertical-align: 0.12em;
+}
+
+.work-subsection-title .highlight-blue {
+  color: #00A6F5;
+}
+
+.work-subsection-description {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* 60px between subsection description and cards */
+#work .work-carousel,
+#work .work-creative-grid {
+  margin-top: 60px;
+}
+
+/* 80px between Featured Projects and Creative Practice */
+#work .work-creative-section {
+  margin-top: 80px;
+}
+
+
+/* =========================================================
+   3. FEATURED PROJECT CAROUSEL
+========================================================= */
+
+.work-carousel {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.work-carousel-left,
+.work-carousel-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.work-carousel-track {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 5px 2px 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-theme-border) transparent;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.work-carousel-track>article {
+  flex: 0 0 calc(50% - 10px);
+  width: calc(50% - 10px);
+  min-width: 0;
+  min-height: 390px;
+  scroll-snap-align: start;
+}
+
+.work-carousel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.work-carousel-button:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-button-text, #fff);
+}
+
+.work-carousel-button:active {
+  transform: scale(0.94);
+}
+
+.work-carousel-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   4. FEATURED PROJECT CARDS
+========================================================= */
+
+.work-case-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+
+  height: 390px;
+  min-width: 0;
+  padding: 20px;
+  overflow: hidden;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 20px;
+
+  background:
+    radial-gradient(circle at 100% 0%,
+      rgba(0, 166, 245, 0.075),
+      transparent 40%),
+    var(--color-surface);
+
+  color: var(--color-text-primary);
+
+  box-shadow: var(--color-card-shadow,
+      0 5px 18px rgba(17, 24, 39, 0.04));
+
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease;
+}
+
+.work-case-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 166, 245, 0.55);
+  box-shadow: var(--color-card-hover-shadow,
+      0 14px 32px rgba(0, 124, 184, 0.1));
+}
+
+.work-case-card h3,
+.work-case-card h4 {
+  overflow-wrap: anywhere;
+}
+
+.work-case-card .work-project-title {
+  margin: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+
+.work-case-card>div {
+  min-width: 0;
+}
+
+.work-case-card>.mt-auto {
+  margin-top: auto;
+}
+
+/* Expanded case studies grow naturally */
+
+.work-case-card.is-expanded {
+  z-index: 2;
+  height: auto;
+  min-height: 390px;
+  overflow: visible;
+  align-self: flex-start;
+}
+
+.work-case-card.is-expanded>div {
+  flex-shrink: 0;
+}
+
+.work-carousel-track:has(.work-case-card.is-expanded) {
+  align-items: flex-start;
+  overflow-y: visible;
+}
+
+.work-carousel-track:not(:has(.work-case-card.is-expanded)) {
+  align-items: stretch;
+}
+
+/* Project status and action colours */
+
+.work-case-card a,
+.work-case-card button {
+  max-width: 100%;
+}
+
+.work-case-card a:focus-visible,
+.work-case-card button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   5. CREATIVE PRACTICE GRID
+========================================================= */
+
+.work-creative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+
+.work-creative-card {
+  --creative-muted: var(--color-text-muted);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  overflow: hidden;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 22px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+
+  box-shadow: var(--color-card-shadow,
+      0 6px 22px rgba(17, 24, 39, 0.035));
+
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.work-creative-card:hover,
+.work-creative-card.is-active {
+  transform: translateY(-3px);
+  border-color: rgba(0, 166, 245, 0.48);
+  box-shadow: var(--color-card-hover-shadow,
+      0 16px 38px rgba(0, 124, 184, 0.09));
+}
+
+.work-creative-card h3,
+.work-creative-card h4 {
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   6. CREATIVE CARD TOPLINE
+========================================================= */
+
+.creative-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+
+  color: var(--creative-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.creative-index {
+  display: grid;
+  flex: 0 0 28px;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 50%;
+
+  color: var(--color-text-muted);
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+
+/* =========================================================
+   7. SHARED CREATIVE ARTWORK
+========================================================= */
+
+.creative-artwork {
+  position: relative;
+  display: block;
+  flex: 0 0 220px;
+  width: 100%;
+  height: 220px;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+
+  border: 0;
+  border-radius: 14px;
+  isolation: isolate;
+
+  text-align: left;
+}
+
+button.creative-artwork {
+  cursor: pointer;
+}
+
+.creative-artwork-label {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  padding: 7px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+
+  background: rgba(17, 24, 39, 0.82);
+  color: #fff;
+
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   8. BRANDING — COLOUR PALETTE PLAYGROUND
+========================================================= */
+
+.branding-artwork {
+  background: #211719;
+  color: #F9EDE5;
+  transition: background-color 400ms ease;
+}
+
+.branding-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.palette-shape {
+  position: absolute;
+  display: block;
+  width: 86px;
+  height: 86px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-radius 450ms ease,
+    background-color 400ms ease;
+}
+
+.palette-shape-1 {
+  top: 25px;
+  left: 24%;
+  transform: rotate(-18deg);
+}
+
+.palette-shape-2 {
+  top: 56px;
+  left: 43%;
+  transform: rotate(16deg);
+  mix-blend-mode: screen;
+}
+
+.palette-shape-3 {
+  top: 91px;
+  left: 30%;
+  transform: rotate(35deg);
+}
+
+.palette-shape-4 {
+  top: 38px;
+  right: 12%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.branding-artwork:hover .palette-shape-1 {
+  transform: translate(-7px, -5px) rotate(-27deg);
+}
+
+.branding-artwork:hover .palette-shape-2 {
+  transform: translate(8px, 6px) rotate(24deg);
+}
+
+.branding-artwork:hover .palette-shape-3 {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.branding-monogram {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  z-index: 2;
+
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.08em;
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.branding-palette-name {
+  position: absolute;
+  bottom: 51px;
+  left: 15px;
+  z-index: 2;
+
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  pointer-events: none;
+}
+
+.branding-palette-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.branding-palette-controls button {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  padding: 0;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.branding-palette-controls button:hover {
+  background: currentColor;
+  color: var(--color-surface);
+}
+
+.branding-palette-controls button:active {
+  transform: scale(0.92);
+}
+
+.branding-palette-controls button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.creative-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.creative-palette span {
+  display: block;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 12px;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 99px;
+
+  transition:
+    background-color 350ms ease,
+    transform 200ms ease;
+}
+
+.creative-palette span:hover {
+  transform: scaleY(1.35);
+}
+
+
+/* =========================================================
+   9. MARKETING — CHAOS TO CLARITY
+========================================================= */
+
+.marketing-artwork {
+  background: #00A6F5;
+  color: #082B40;
+  cursor: pointer;
+
+  transition:
+    background-color 450ms ease,
+    color 350ms ease;
+}
+
+.marketing-kicker,
+.marketing-action {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.marketing-kicker {
+  top: 15px;
+  left: 16px;
+}
+
+.marketing-action {
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+
+  background: rgba(8, 43, 64, 0.9);
+  color: #fff;
+}
+
+.marketing-fragment {
+  position: absolute;
+  z-index: 2;
+
+  font-family: var(--font-display);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+
+  transition:
+    top 550ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    left 550ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 550ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 350ms ease;
+}
+
+.fragment-one {
+  top: 48px;
+  left: 12%;
+  transform: rotate(-13deg);
+}
+
+.fragment-two {
+  top: 108px;
+  left: 54%;
+  transform: rotate(12deg);
+}
+
+.fragment-three {
+  top: 153px;
+  left: 24%;
+  color: #fff;
+  transform: rotate(-7deg);
+}
+
+.marketing-shape {
+  position: absolute;
+  display: block;
+
+  transition:
+    top 550ms ease,
+    right 550ms ease,
+    bottom 550ms ease,
+    left 550ms ease,
+    transform 550ms ease,
+    border-radius 350ms ease;
+}
+
+.marketing-shape-one {
+  top: 32px;
+  right: 12%;
+  width: 42px;
+  height: 42px;
+
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.marketing-shape-two {
+  top: 114px;
+  left: 8%;
+  width: 24px;
+  height: 24px;
+
+  background: #D4AF37;
+  transform: rotate(25deg);
+}
+
+.marketing-shape-three {
+  right: 18%;
+  bottom: 25px;
+  width: 34px;
+  height: 34px;
+
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Transformed composition */
+
+.marketing-artwork.is-transformed {
+  background: #F2E9DF;
+  color: #292C2B;
+}
+
+.marketing-artwork.is-transformed .fragment-one {
+  top: 70px;
+  left: 12%;
+  transform: rotate(0);
+}
+
+.marketing-artwork.is-transformed .fragment-two {
+  top: 70px;
+  left: 43%;
+  transform: rotate(0);
+}
+
+.marketing-artwork.is-transformed .fragment-three {
+  top: 111px;
+  left: 12%;
+  color: #B85D3F;
+  transform: rotate(0);
+}
+
+.marketing-artwork.is-transformed .marketing-shape-one {
+  top: 25px;
+  right: 12%;
+  transform: scale(0.7);
+}
+
+.marketing-artwork.is-transformed .marketing-shape-two {
+  top: 146px;
+  left: 74%;
+  transform: rotate(45deg);
+}
+
+.marketing-artwork.is-transformed .marketing-shape-three {
+  right: 13%;
+  bottom: 55px;
+  transform: rotate(0);
+}
+
+
+/* =========================================================
+   10. VISUAL COMMUNICATION — LIVING SKETCHBOOK
+========================================================= */
+
+.visual-trace {
+  --trace-accent: #B85D3F;
+
+  background: #F2E9DF;
+  color: #292C2B;
+
+  cursor: crosshair;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.visual-artwork-heading {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  z-index: 1;
+
+  color: #292C2B;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+
+  pointer-events: none;
+}
+
+.visual-decoration {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.visual-decoration-one {
+  top: 72px;
+  left: 14%;
+  width: 68px;
+  height: 68px;
+
+  border: 2px solid #B85D3F;
+  border-radius: 50%;
+}
+
+.visual-decoration-two {
+  top: 108px;
+  right: 16%;
+  width: 54px;
+  height: 54px;
+
+  background: #00A6F5;
+  transform: rotate(18deg);
+}
+
+.visual-decoration-three {
+  right: 35%;
+  bottom: 24px;
+  width: 35px;
+  height: 35px;
+
+  border: 2px solid #292C2B;
+  transform: rotate(45deg);
+}
+
+.visual-trace-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.visual-trace-svg line,
+.visual-trace-svg circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.visual-trace-reset {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 4;
+
+  padding: 8px 11px;
+
+  border: 1px solid rgba(41, 44, 43, 0.3);
+  border-radius: 999px;
+
+  background: rgba(242, 233, 223, 0.94);
+  color: #292C2B;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.visual-trace-reset:hover {
+  border-color: #292C2B;
+  background: #292C2B;
+  color: #fff;
+}
+
+.visual-trace-reset:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   11. CREATIVE CARD CONTENT
+========================================================= */
+
+.creative-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px 2px 2px;
+}
+
+.creative-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 19px;
+}
+
+.creative-title-row h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+}
+
+.creative-type {
+  flex-shrink: 0;
+  padding: 5px 8px;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 999px;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.creative-card-content>p {
+  margin: 10px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   12. CREATIVE SKILL TAGS
+========================================================= */
+
+.creative-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.creative-tags span {
+  padding: 6px 9px;
+
+  border: 1px solid rgba(0, 166, 245, 0.18);
+  border-radius: 999px;
+
+  background: rgba(0, 166, 245, 0.055);
+  color: var(--color-text-secondary);
+
+  font-size: 10px;
+  line-height: 1.4;
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.creative-tags span:hover {
+  border-color: rgba(0, 166, 245, 0.4);
+  background: rgba(0, 166, 245, 0.11);
+}
+
+
+/* =========================================================
+   13. CREATIVE THINKING REVEALS
+========================================================= */
+
+.creative-reveal {
+  display: grid;
+  grid-template-rows: 1fr;
+  min-width: 0;
+  margin-top: 18px;
+  padding-top: 16px;
+
+  border-top: 1px solid var(--color-theme-border);
+  opacity: 1;
+
+  animation: creative-reveal-in 280ms ease both;
+}
+
+.creative-reveal[hidden] {
+  display: none;
+}
+
+.creative-reveal-label {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.creative-reveal p {
+  margin: 9px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@keyframes creative-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   14. CREATIVE PROCESS VISUALS
+========================================================= */
+
+.marketing-mini-type,
+.visual-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.marketing-mini-type span:nth-child(even),
+.visual-flow-arrow {
+  color: var(--color-accent);
+}
+
+.visual-flow span:last-child {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   15. CREATIVE CARD TOGGLE
+========================================================= */
+
+.creative-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+  padding: 18px 0 2px;
+
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.creative-toggle>span {
+  display: grid;
+  flex: 0 0 27px;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+
+  border: 1px solid var(--color-theme-border);
+  border-radius: 50%;
+
+  color: var(--color-accent);
+  font-size: 16px;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.creative-toggle:hover>span {
+  transform: rotate(90deg);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.creative-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   16. DARK THEME
+========================================================= */
+
+:root[data-theme="dark"] #work {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .work-case-card,
+:root[data-theme="dark"] #work .work-creative-card {
+  border-color: var(--color-theme-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .work-case-card {
+  background-image:
+    radial-gradient(circle at 100% 0%,
+      rgba(56, 189, 248, 0.09),
+      transparent 42%);
+}
+
+:root[data-theme="dark"] #work .work-case-card .work-project-title {
+  color: var(--color-accent);
+}
+
+:root[data-theme="dark"] #work .work-case-card p,
+:root[data-theme="dark"] #work .work-case-card li {
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-emerald-700 {
+  color: #6EE7B7;
+}
+
+:root[data-theme="dark"] #work .work-case-card .bg-emerald-50 {
+  background-color: #12352F;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-sky-700 {
+  color: #7DD3FC;
+}
+
+:root[data-theme="dark"] #work .work-case-card .bg-sky-50 {
+  background-color: #172D42;
+}
+
+:root[data-theme="dark"] #work .work-case-card .border-emerald-100 {
+  border-color: #245443;
+}
+
+:root[data-theme="dark"] #work .work-case-card .text-emerald-800 {
+  color: #A7F3D0;
+}
+
+:root[data-theme="dark"] #work .work-case-card .bg-emerald-100 {
+  background-color: #164638;
+}
+
+:root[data-theme="dark"] #work .work-case-card .hover\:bg-sky-50:hover {
+  background-color: #172D42;
+}
+
+:root[data-theme="dark"] #work .work-carousel-button {
+  border-color: var(--color-theme-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .work-carousel-button:hover {
+  background-color: var(--color-accent);
+  color: #0B1120;
+}
+
+:root[data-theme="dark"] #work .creative-tags span {
+  border-color: rgba(56, 189, 248, 0.22);
+  background-color: rgba(56, 189, 248, 0.075);
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme="dark"] #work .creative-tags span:hover {
+  background-color: rgba(56, 189, 248, 0.14);
+}
+
+:root[data-theme="dark"] #work .creative-type,
+:root[data-theme="dark"] #work .creative-index {
+  border-color: var(--color-theme-border);
+  color: var(--color-text-muted);
+}
+
+:root[data-theme="dark"] #work .creative-toggle {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme="dark"] #work .creative-toggle>span {
+  border-color: var(--color-theme-border);
+}
+
+:root[data-theme="dark"] #work .creative-reveal {
+  border-top-color: var(--color-theme-border);
+}
+
+/* Preserve intentional light artwork colours in dark mode */
+
+:root[data-theme="dark"] #work .marketing-artwork.is-transformed {
+  background-color: #F2E9DF;
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace {
+  background-color: #F2E9DF;
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-artwork-heading {
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace-reset {
+  border-color: rgba(41, 44, 43, 0.3);
+  background-color: rgba(242, 233, 223, 0.94);
+  color: #292C2B;
+}
+
+:root[data-theme="dark"] #work .visual-trace-reset:hover {
+  background-color: #292C2B;
+  color: #fff;
+}
+
+
+/* =========================================================
+   17. TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .work-creative-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .work-carousel-track>article {
+    flex-basis: calc(100% - 4px);
+    width: calc(100% - 4px);
+  }
+
+  .work-case-card {
+    padding: 18px;
+  }
+}
+
+
+/* =========================================================
+   18. MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .work-main-title {
+    font-size: clamp(34px, 10vw, 44px);
+  }
+
+  .work-intro {
+    font-size: 15px;
+  }
+
+  #work .work-header {
+    margin-bottom: 2.5rem;
+  }
+
+  #work .work-header h1 {
+    margin-top: 2rem;
+  }
+
+  #work .work-header>p:last-child {
+    margin-top: 1.5rem;
+  }
+
+  .work-subsection {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .work-subsection-description {
+    font-size: 14px;
+  }
+
+  #work .work-carousel,
+  #work .work-creative-grid {
+    margin-top: 36px;
+  }
+
+  #work .work-creative-section {
+    margin-top: 56px;
+  }
+
+  #work .work-portfolio-link {
+    margin-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .work-carousel {
+    grid-template-columns: 30px minmax(0, 1fr) 30px;
+    gap: 5px;
+  }
+
+  .work-carousel-track {
+    gap: 14px;
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+
+  .work-carousel-track>article {
+    flex-basis: 100%;
+    width: 100%;
+    min-height: 390px;
+  }
+
+  .work-case-card {
+    padding: 15px;
+  }
+
+  .work-carousel-button {
+    flex-basis: 28px;
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  .work-creative-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .work-creative-card {
+    padding: 14px;
+  }
+
+  .creative-artwork {
+    flex-basis: 220px;
+    height: 220px;
+  }
+
+  .creative-card-content {
+    padding-top: 17px;
+  }
+
+  .creative-title-row h3 {
+    font-size: 17px;
+  }
+
+  .creative-type {
+    font-size: 9px;
+  }
+
+  .palette-shape-1 {
+    left: 22%;
+  }
+
+  .palette-shape-2 {
+    left: 42%;
+  }
+
+  .marketing-fragment {
+    font-size: clamp(28px, 9vw, 38px);
+  }
+
+  .branding-palette-controls {
+    gap: 6px;
+  }
+}
+
+
+/* =========================================================
+   19. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .work-carousel {
+    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    gap: 4px;
+  }
+
+  .work-carousel-button {
+    flex-basis: 24px;
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .work-case-card {
+    padding: 13px;
+  }
+
+  .work-creative-card {
+    padding: 12px;
+  }
+
+  .creative-card-topline {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .creative-title-row {
+    flex-wrap: wrap;
+  }
+
+  .branding-palette-name {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   20. ACCESSIBILITY AND REDUCED MOTION
+========================================================= */
+
+#work button:focus-visible,
+#work a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #work *,
+  #work *::before,
+  #work *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   21. DESIGN PORTFOLIO LINK AND SECTION END
+========================================================= */
+
+/* 80px after the creative cards */
+#work .work-portfolio-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+ 
+}

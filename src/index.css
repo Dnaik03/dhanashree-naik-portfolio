@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Syne:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* =========================================================
+   1. DESIGN TOKENS
+========================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* Brand colours */
+  --color-navy: #111827;
+  --color-slate: #374151;
+  --color-blue: #00A6F5;
+  --color-mint: #10B981;
+  --color-gold: #D4AF37;
+
+  /* Surfaces */
+  --color-page: #EAF5FF;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F8FAFC;
+  --color-surface-tertiary: #F1F5F9;
+
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #64748B;
+  --color-text-inverse: #FFFFFF;
+
+  /* Accent and borders */
+  --color-border: #E2E8F0;
+  --color-theme-border: #E2E8F0;
+  --color-accent: #00A6F5;
+  --color-accent-hover: #0284C7;
+  --color-accent-soft: #E0F2FE;
+  --color-button-text: #FFFFFF;
+
+  /* Tags */
+  --color-tag-bg: #ECFDF5;
+  --color-tag-border: #A7F3D0;
+  --color-tag-text: #047857;
+
+  /* Cards */
+  --color-card-number: #EAF5FF;
+  --color-card-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --color-card-hover-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
+
+  /* Journey */
+  --color-journey-dot: rgba(71, 113, 145, 0.12);
+  --color-journey-route-start: #527B9D;
+  --color-journey-route-end: #527B9D;
+  --color-journey-popup: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --text-section-label: 12px;
+  --text-body: 16px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  --tracking-section-label: 1.92px;
+  --tracking-heading: -0.035em;
+
+  /* Layout */
+  --container-width: 1200px;
+  --section-spacing: 96px;
+  --card-radius: 16px;
+
+  /* Base document styles */
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-primary);
+  background-color: var(--color-page);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   2. RESET & BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  background-color: var(--color-page);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-page);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+#root {
+  min-height: 100vh;
+  color: var(--color-text-primary);
+  background-color: var(--color-page);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: var(--color-text-primary);
+  background-color: var(--color-accent-soft);
+}
+
+
+/* =========================================================
+   3. TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-extrabold);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-heading);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-heading);
+}
+
+h3 {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-secondary);
+}
+
+
+/* =========================================================
+   4. TYPOGRAPHY UTILITIES
+========================================================= */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-accent,
+.text-gradient {
+  color: var(--color-accent);
+}
+
+.section-label-text,
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-section-label);
+  font-weight: var(--weight-medium);
+  line-height: 1.5;
+  letter-spacing: var(--tracking-section-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* =========================================================
+   5. LAYOUT UTILITIES
+========================================================= */
+
+.container {
+  width: min(var(--container-width), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-spacing);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-label::after {
+  content: '';
+  width: 36px;
+  height: 2px;
+  flex-shrink: 0;
+  background-color: var(--color-gold);
+}
+
+
+/* =========================================================
+   6. BUTTONS
+========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  color: var(--color-button-text);
+  background-color: var(--color-text-primary);
+}
+
+.btn-primary:hover {
+  color: var(--color-text-inverse);
+  background-color: var(--color-accent);
+}
+
+.btn-secondary {
+  color: var(--color-text-primary);
+  background-color: transparent;
+  border-color: var(--color-theme-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+
+/* =========================================================
+   7. SHARED CARDS
+========================================================= */
+
+.card {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-theme-border);
+  border-radius: var(--card-radius);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--color-card-hover-shadow);
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   8. FORMS & ACCESSIBILITY
+========================================================= */
+
+input,
+textarea,
+select {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border-color: var(--color-theme-border);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   9. RESPONSIVE & REDUCED MOTION
+========================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: 64px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
