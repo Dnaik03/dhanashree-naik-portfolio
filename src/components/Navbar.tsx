@@ -36,25 +36,29 @@ function Navbar() {
         className="container flex min-h-[76px] items-center justify-between gap-4"
         aria-label="Main navigation"
       >
+
         <a
           href="#home"
           onClick={closeMenu}
-          className="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-focus)]"
+          className="flex shrink-0 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-focus)]"
           aria-label="Dhanashree.builds — Home"
         >
-          <span className="font-heading text-lg font-bold tracking-tight text-[var(--color-navy)]">
-            Dhanashree.builds
+          <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-[var(--color-gold)]">
+            <img
+              src="/Fevicon.jpg"
+              alt=""
+              className="h-full w-full rounded-full object-cover"
+            />
           </span>
 
-          <span
-            className="ml-1 text-xl text-[var(--color-gold)]"
-            aria-hidden="true"
-          >
-            ●
-          </span>
+          <span className="flex flex-col">
+            <span className="font-heading text-lg font-bold tracking-tight text-[var(--color-navy)]">
+              Dhanashree.builds
+            </span>
 
-          <span className="mt-0.5 block text-[10px] font-medium tracking-wide text-[var(--color-muted)] sm:text-xs">
-            PRODUCT THINKING · TECHNOLOGY · DESIGN
+            <span className="mt-0.5 text-[10px] font-medium tracking-wide text-[var(--color-muted)] sm:text-xs">
+              PRODUCT THINKING · TECHNOLOGY · DESIGN
+            </span>
           </span>
         </a>
 
